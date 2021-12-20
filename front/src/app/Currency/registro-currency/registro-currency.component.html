@@ -1,0 +1,19 @@
+<app-menu></app-menu>
+<div class="container justify-content-center">
+    <div class="card" style="width: 600">
+        <div class="card-header" style="width: 600">
+            <div class="input-group">
+                <input type="text" id="currencyId" class="form-control" placeholder="Ingrese el identificador de la moneda">
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="currencyDesc" class="form-control" placeholder="Ingrese la descripcion de la moneda">
+            </div>
+
+            <div class="col-sm-2">
+                <button class="form-group btn btn-primary" (click)="saveCurrency()"><i class="fas fa-save fa-xs">&nbsp;</i>Grabar</button>
+            </div>
+            <div *ngIf="isMessaje" class="alert alert-danger mt-3">{{errMsj}}</div>
+        </div>
+    </div>
+</div>

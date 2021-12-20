@@ -1,0 +1,27 @@
+<app-menu></app-menu>
+<div class="container d-flex justify-content-center">
+    <div class="card">
+        <div class="card-header">
+            <select class="form-select mx-3" [(ngModel)]="currencySelected" (change)="onChangeCurrency()">
+                <option [selected]="true" value="NN">Seleccione una moneda</option>
+                <option [value]="currency.currencyId" *ngFor="let currency of lstCurrencies">{{currency.currencyId}}</option>
+            </select>
+        </div>
+        <div class="card-body" *ngIf="isFounded">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Moneda Id</th>
+                    <th scope="col">Moneda Descripcion</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="row">{{currencyFounded.currencyId}}</td>
+                    <td scope="row">{{currencyFounded.currencyDescription}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<app-menu></app-menu>
+<div class="container d-flex justify-content-center">
+    <div class="card">
+        <div class="card-header">
+            <select class="form-select mx-3" [(ngModel)]="currencyOrigSelected">
+                <option [selected]="true" value="NN">Seleccione la moneda Origen</option>
+                <option [value]="currency.currencyId" *ngFor="let currency of lstCurrencyOrigen">{{currency.currencyId}}</option>
+            </select>
+            
+            <select class="form-select mx-3" [(ngModel)]="currencyDestSelected">
+                <option [selected]="true" value="NN">Seleccione la moneda Destino</option>
+                <option [value]="currency.currencyId" *ngFor="let currency of lstCurrencyDestination">{{currency.currencyId}}</option>
+            </select>
+
+            <div class="input-group mx-3">
+                <input type="number" id="montoExchangeRate" class="form-control" placeholder="Ingrese un monto">
+            </div>
+
+            <div class="col-sm-2">
+                <button class="form-group btn btn-primary" (click)="saveExchangeRate()"><i class="fas fa-save fa-xs">&nbsp;</i>Grabar</button>
+            </div>
+            <div *ngIf="isMessaje" class="alert alert-danger mt-3">{{errMsj}}</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<app-menu></app-menu>
+<div class="container d-flex justify-content-center">
+    <div class="card">
+        <div class="card-header">
+            <select class="form-select mx-3" [(ngModel)]="currencyOrigSelected" (change)="onChangeCurrency()">
+                <option [selected]="true" value="NN">Seleccione la moneda Origen</option>
+                <option [value]="currency.currencyId" *ngFor="let currency of lstCurrencyOrigen">{{currency.currencyId}}</option>
+            </select>
+            
+            <select class="form-select mx-3" [(ngModel)]="currencyDestSelected" (change)="onChangeCurrency()">
+                <option [selected]="true" value="NN">Seleccione la moneda Destino</option>
+                <option [value]="currency.currencyId" *ngFor="let currency of lstCurrencyDestination">{{currency.currencyId}}</option>
+            </select>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Moneda Origen</th>
+                    <th scope="col">Moneda Destino</th>
+                    <th scope="col">Monto de cambio</th>
+                    <th scope="col">Ingrese un monto</th>
+                    <th scope="col">TOTAL</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let exchangeRate of lstExchangeRate">
+                    <td scope="row">{{exchangeRate.currencyOrigin.currencyId}}</td>
+                    <td scope="row">{{exchangeRate.currencyDestination.currencyId}}</td>
+                    <td scope="row">{{exchangeRate.exchangeRateBuyAmount}}</td>
+                    <td scope="row">
+                        <div class="input-group mb-3">
+                            <input type="number" [id]="'monto'+exchangeRate.exchangeRateId" class="form-control" placeholder="Ingrese un monto" (change)="oncalculateTotal(exchangeRate)">
+                        </div>
+                    </td>
+                    <td scope="row" [id]="'total'+exchangeRate.exchangeRateId"></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
