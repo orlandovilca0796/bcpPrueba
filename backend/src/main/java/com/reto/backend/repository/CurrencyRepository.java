@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface CurrencyRepository extends JpaRepository<Currency, String> {
-    List<Currency> findByCurrencyNameContainingIgnoreCase(String currencyName);
+    List<Currency> findByCurrencyIdContainingIgnoreCase(String currencyId);
 }

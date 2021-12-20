@@ -7,8 +7,9 @@ import java.util.List;
 
 public interface ExchangeRateService {
     List<ExchangeRate> findAll();
-    List<ExchangeRate> findByListOriginCurrency(List<String> lstCurrencyOriginId);
-    List<ExchangeRate> findByListDestinationCurrency(List<String> lstCurrencyDestinationId);
+    ExchangeRate findById(String exchangeRateId);
+    List<ExchangeRate> findByOneCurrency(String currencyId);
+    List<ExchangeRate> findByTwoCurrency(String currency1Id, String currency2Id);
     List<ExchangeRate> findByListOrigDestIdCurrency(List<String> lstCurrencyOriginId, List<String> lstCurrencyDestinationId);
     List<ExchangeRate> findByOrigDestIdCurrency(String currencyOriginId, String currencyDestinationId);
     ExchangeRate saveExchangeRate(ExchangeRate exchangeRate);
