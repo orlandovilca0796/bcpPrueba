@@ -1,6 +1,7 @@
 package com.reto.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.reto.backend.security.entity.Account;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,7 +32,7 @@ public class Currency {
     @JoinColumn(name = "creation_user_id")
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-    private User creationUser;
+    private Account creationUser;
 
     @Column(name = "creation_date")
     private Date creationDate;

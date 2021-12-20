@@ -1,6 +1,7 @@
 package com.reto.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.reto.backend.security.entity.Account;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,8 +30,12 @@ public class AuditExchangeRate {
     @JoinColumn(name = "audit_user_id")
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-    private User auditUser;
+    private Account auditUser;
 
     @Column(name = "audit_date")
     private Date auditDate;
+
+    @Column(name = "exchange_rate_buy_amount")
+    private double exchangeRateBuyAmount;
+
 }

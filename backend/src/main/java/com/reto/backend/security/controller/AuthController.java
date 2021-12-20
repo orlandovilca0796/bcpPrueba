@@ -20,7 +20,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.util.HashSet;
@@ -63,7 +62,7 @@ public class AuthController {
         }
         account.setRoles(roles);
         this.accountService.saveAccount(account);
-        return new ResponseEntity("Usuario creado",HttpStatus.CREATED);
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping("/login")

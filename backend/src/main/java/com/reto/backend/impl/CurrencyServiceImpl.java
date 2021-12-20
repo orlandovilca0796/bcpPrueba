@@ -17,6 +17,11 @@ public class CurrencyServiceImpl implements CurrencyService {
     private final CurrencyRepository currencyRepository;
 
     @Override
+    public List<Currency> findAll(){
+        return currencyRepository.findAll();
+    }
+
+    @Override
     public Currency findCurrencyById(String currencyId) {
         return currencyRepository.findById(currencyId).orElse(null);
     }

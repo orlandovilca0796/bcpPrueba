@@ -22,21 +22,18 @@ public class ExchangeRate {
 
     @NotNull(message = "La moneda origen no puede ser vacia")
     @JoinColumn(name = "currency_origin_id")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private Currency currencyOrigin;
 
     @NotNull(message = "La moneda destino no puede ser vacia")
     @JoinColumn(name = "currency_destination_id")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private Currency currencyDestination;
 
     @Column(name = "exchange_rate_buy_amount")
     @Positive(message = "EL monto compra debe ser mayor a cero")
-    private double exchangeRateAmountBuy;
+    private double exchangeRateBuyAmount;
 
-    @Column(name = "exchange_rate_sale_amount")
-    @Positive(message = "EL monto venta debe ser mayor a cero")
-    private double exchangeRateAmountSale;
 }
