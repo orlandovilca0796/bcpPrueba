@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "a1486ed7-5714-4cef-aecc-23e793eb1e94",
+		"name": "bcpPrueba",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Currency Busq x ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/currency/USD",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"currency",
+						"USD"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Currency Busq All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/currency/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"currency",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Currency Busq x NAME",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/currency?id=P",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"currency"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "P"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Currency Save",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY0MDAyOTM0NCwiZXhwIjoxNjQwMDY1MzQ0fQ.-1Ru0rxhqeAcnl6lF7BpJuirpWbIX8HymDa0p-1Gpc7dQSeQVRrh8u2Gq1OwWX1wtWdOKA5IrIJATskuqGyfXA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"currencyId\": \"JPY\",\r\n    \"currencyDescription\": \"yen japones\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/currency",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"currency"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ExchangeRate Save",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY0MDAyOTM0NCwiZXhwIjoxNjQwMDY1MzQ0fQ.-1Ru0rxhqeAcnl6lF7BpJuirpWbIX8HymDa0p-1Gpc7dQSeQVRrh8u2Gq1OwWX1wtWdOKA5IrIJATskuqGyfXA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"currencyOrigin\":{\r\n        \"currencyId\":\"USD\"\r\n    },\r\n    \"currencyDestination\":{\r\n        \"currencyId\":\"EUR\"\r\n    },\r\n    \"exchangeRateBuyAmount\":7.5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/exchangerate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"exchangerate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exchange Busq X CurrencyID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/exchangerate/id?currency1=PEN",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"exchangerate",
+						"id"
+					],
+					"query": [
+						{
+							"key": "currency1",
+							"value": "PEN"
+						},
+						{
+							"key": "currency2",
+							"value": "PEN",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exchange Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"exchangeRateId\":\"1\",\r\n    \"currencyOrigin\":{\r\n        \"currencyId\":\"PEN\"\r\n    },\r\n    \"currencyDestination\":{\r\n        \"currencyId\":\"USD\"\r\n    },\r\n    \"exchangeRateAmountBuy\":1,\r\n    \"exchangeRateAmountSale\":4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/exchangerate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"exchangerate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Account New",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"orlando\",\r\n    \"roles\":[\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/auth/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"auth",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Account Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
