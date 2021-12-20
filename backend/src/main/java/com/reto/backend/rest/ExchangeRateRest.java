@@ -43,7 +43,7 @@ public class ExchangeRateRest {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<ExchangeRate> createExchangeRate(@Valid @RequestBody ExchangeRate exchangeRate, BindingResult result){
-        if (result.hasErrors()){
+        if (result.hasErrors() || exchangeRate.getCurrencyOrigin().getCurrencyId().equals(exchangeRate.getCurrencyDestination().getCurrencyId())){
             String error = Util.formatMessage(result);
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, error);
         }
@@ -67,7 +67,7 @@ public class ExchangeRateRest {
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping
     public ResponseEntity<ExchangeRate> updateExchangeRate(@Valid @RequestBody ExchangeRate exchangeRate, BindingResult result){
-        if(result.hasErrors() || exchangeRate.getExchangeRateId() == null){
+        if(result.hasErrors() || exchangeRate.getExchangeRateId() == null || exchangeRate.getCurrencyOrigin().getCurrencyId().equals(exchangeRate.getCurrencyDestination().getCurrencyId())){
             if(exchangeRate.getExchangeRateId() == null){
                 ObjectError errorId = new ObjectError("exchange_rate_id",Constants.ERROR_UPDATE_EXCHANGE_RATE_NEED_ID.getValue());
                 result.addError(errorId);
